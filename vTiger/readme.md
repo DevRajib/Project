@@ -51,7 +51,7 @@ sudo systemctl restart mariadb
 sudo mysql_secure_installation
 
 ```
-##Step-5==> Create Database and Database
+## Step-5==> Create Database and Database
 
 
 ```
@@ -91,15 +91,10 @@ sudo apt install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl
 
 php -v    
 ```
-## Step-7==> Configure PHP for Vtiger
-
-``````
+### Step-7==> Configure PHP for Vtiger
 ### Open the /etc/php/7.4/apache2/php.ini configuration file and make the following adjustments;
+##### (if php7.4 versone)
 
-(if php7.4 versone)
-
-```
-#### Step-8==>Edit php.ini  file
 
 ```
 sudo vim /etc/php/7.4/apache2/php.ini  
@@ -122,7 +117,8 @@ sudo systemctl restart apache2
 
 
 ### Step-8==> download vtiger vtigercrm7.3.0 or vtigercrm7.4.0
-``````
+
+```
 cd /var/www    
 sudo wget https://jaist.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.3.0/Core%20Product/vtigercrm7.3.0.tar.gz   
 sudo wget https://altushost-swe.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.4.0/Core%20Product/vtigercrm7.4.0.tar.gz
@@ -130,7 +126,7 @@ sudo mkdir /var/www/vtigercrm
 sudo tar xzf vtigercrm7.3.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/  
 sudo rm vtigercrm7.3.0.tar         
 ```
-###  Step-9==> setup config file
+## Step-9==> setup config file
 
 ```
 
@@ -154,6 +150,7 @@ sudo vim /etc/apache2/sites-available/vtigercrm.conf
 ```
 
 ###  Step-10==> 
+
 ```
 sudo chown -R www-data:www-data /var/www/vtigercrm/    
 sudo a2dissite 000-default.conf    
