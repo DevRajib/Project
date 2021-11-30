@@ -70,7 +70,7 @@ sudo ufw allow 80/tcp
 
 sudo apt install certbot -y
 sudo apt install python3-certbot-apache -y
-sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email admin@domain.com -d domain.com
+sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email admin@devopshub.cf -d devopshub.cf
 
 ```
 
