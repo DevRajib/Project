@@ -17,7 +17,7 @@ curl -sLS https://raw.githubusercontent.com/alexellis/k3sup/master/get.sh | sh
 sudo install k3sup /usr/local/bin/
 k3sup 
 
-k3sup install --ip 140.238.165.125 --user ubuntu  
+k3sup install --ip 140.238.165.125 --ssh-key ~/home/devrajib/.ssh/id_rsa--user ubuntu --sudo
 
 ssh -i /home/devrajib/.ssh/id_rsa ubuntu@140.238.165.125 
 
