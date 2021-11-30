@@ -83,7 +83,7 @@ Save it
 sudo systemctl restart apache2
 
 ```
-#############################################################################################################################################
+######################################################################################################
 
 
 ## Step-6==> Create Database and Database
@@ -108,7 +108,7 @@ exit
 ```
 
 
-### This is not commund
+### This is not command
 
 ```
 DB_HOST=localhost 
@@ -119,22 +119,25 @@ DB_USER=vtiger
 ```
 
 
-#############################################################################################################################################
+####################################################################################################
 
+#####################################################################################################
 
-#############################################################################################################################################
-
-```
-sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
-sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
-sudo netfilter-persistent save
-```
 
 ``````   
 sudo systemctl restart apache2          
 sudo systemctl restart mysql   
 
 ```
+
+```
+Please don't use if no need
+
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+sudo netfilter-persistent save
+```
+
 
 
 
