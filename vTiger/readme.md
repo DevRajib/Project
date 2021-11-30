@@ -121,12 +121,15 @@ sudo systemctl restart apache2
 ### Step-8==> download vtiger vtigercrm7.3.0 or vtigercrm7.4.0
 
 ```
-cd /var/www    
-sudo wget https://jaist.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.3.0/Core%20Product/vtigercrm7.3.0.tar.gz   
+cd /var/www
+sudo mkdir /var/www/vtigercrm
+
+sudo wget https://jaist.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.3.0/Core%20Product/vtigercrm7.3.0.tar.gz
+sudo tar xzf vtigercrm7.3.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
+
 sudo wget https://altushost-swe.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.4.0/Core%20Product/vtigercrm7.4.0.tar.gz
-sudo mkdir /var/www/vtigercrm      
-sudo tar xzf vtigercrm7.3.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/  
-sudo rm vtigercrm7.3.0.tar         
+sudo tar xzf vtigercrm7.4.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/    
+  
 ```
 ## Step-9==> setup config file
 
