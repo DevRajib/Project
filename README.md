@@ -24,4 +24,11 @@ ssh -i /home/alex/.ssh/id_rsa ubuntu@140.238.165.125
 sudo cp /home/devrajib/Desktop/oracle/ssh-key-2021-11-29.key /home/alex/.ssh/id_rsa
 
 
+
+systemctl status firewalld
+systemctl stop firewalld
+systemctl disable firewalld
+
+
+
 ```
