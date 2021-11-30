@@ -3,6 +3,11 @@
 ## Install LAMP Stack
 
 ```
+sudo apt update
+sudo apt install software-properties-common       
+sudo add-apt-repository ppa:ondrej/php       
+sudo apt update  
+
 sudo apt install apache2 apache2-utils mariadb-server mariadb-client php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath -y
 ```
 
@@ -84,14 +89,34 @@ DB_USER=vtiger
 
 ## Step-6==> Install PHP 7.4
 
-``````
+```
 sudo apt install software-properties-common       
 sudo add-apt-repository ppa:ondrej/php       
 sudo apt update          
 
-sudo apt install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath -y              
+sudo apt install php7.4 php-imap php-curl php-xml php-mysql php-mbstring php-bcmath php-gd php-soap php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath -y              
 
 php -v    
+
+sudo vim /etc/php/7.4/apache2/php.ini  
+
+max_execution_time = 600   
+
+max_input_time = 600               
+max_input_vars = 10000  
+memory_limit = 1024M   
+
+default_socket_timeout = 600                      
+log_errors = Off         
+post_max_size = 50M      
+upload_max_filesize = 50M           
+      
+Save it
+
+sudo systemctl restart apache2
+
+
+
 ```
 ### Step-7==> Configure PHP for Vtiger
 ### Open the /etc/php/7.4/apache2/php.ini configuration file and make the following adjustments;
