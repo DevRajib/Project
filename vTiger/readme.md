@@ -10,6 +10,16 @@ sudo apt update
 
 sudo apt install apache2 apache2-utils mariadb-server mariadb-client php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath -y
 
+
+sudo systemctl restart apache2
+sudo systemctl start apache2
+sudo systemctl enable --now apache2
+
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo systemctl restart mariadb
+
+
 sudo vim /etc/php/7.4/apache2/php.ini  
 
 max_execution_time = 600   
