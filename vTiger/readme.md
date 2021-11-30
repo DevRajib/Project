@@ -50,19 +50,19 @@ sudo tar xzf vtigercrm7.4.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
 
 sudo vim /etc/apache2/sites-available/vtigercrm.conf
 
-     <VirtualHost *:80>       
-     ServerName domain.com    
-     DocumentRoot /var/www/vtigercrm/   
-     
-     <Directory /var/www/vtigercrm/>    
-        Options FollowSymlinks     
-        AllowOverride All     
-        Require all granted   
-     </Directory>   
+ <VirtualHost *:80>       
+ ServerName devopshub.cf
+ DocumentRoot /var/www/vtigercrm/   
+ 
+ <Directory /var/www/vtigercrm/>    
+    Options FollowSymlinks     
+    AllowOverride All     
+    Require all granted   
+ </Directory>   
 
-     ErrorLog /var/log/apache2/vtigercrm_error.log     
-     CustomLog /var/log/apache2/vtigercrm_access.log combined    
-     </VirtualHost>
+ ErrorLog /var/log/apache2/vtigercrm_error.log     
+ CustomLog /var/log/apache2/vtigercrm_access.log combined    
+ </VirtualHost>
 
 sudo chown -R www-data:www-data /var/www/vtigercrm/
 sudo a2dissite 000-default.conf
