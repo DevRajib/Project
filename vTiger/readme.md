@@ -11,6 +11,9 @@ sudo apt update
 sudo apt install apache2 apache2-utils mariadb-server mariadb-client php7.4 php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath php-imap php-curl php-xml php-mysql php-mbstring php-bcmath php-gd php-soap -y
 
 
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+sudo netfilter-persistent save
 
 sudo systemctl start apache2
 sudo systemctl enable --now apache2
