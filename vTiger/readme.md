@@ -8,12 +8,13 @@ sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
 
-sudo apt install apache2 apache2-utils mariadb-server mariadb-client php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath -y
+sudo apt install apache2 apache2-utils mariadb-server mariadb-client php7.4 php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl php-bcmath php-imap php-curl php-xml php-mysql php-mbstring php-bcmath php-gd php-soap -y
 
 
-sudo systemctl restart apache2
+
 sudo systemctl start apache2
 sudo systemctl enable --now apache2
+sudo systemctl restart apache2
 
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
@@ -34,6 +35,42 @@ upload_max_filesize = 50M
       
 Save it
 sudo systemctl restart apache2
+
+cd /var/www
+sudo mkdir /var/www/vtigercrm
+
+sudo wget https://jaist.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.3.0/Core%20Product/vtigercrm7.3.0.tar.gz
+sudo tar xzf vtigercrm7.3.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
+
+sudo wget https://altushost-swe.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.4.0/Core%20Product/vtigercrm7.4.0.tar.gz
+sudo tar xzf vtigercrm7.4.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
+
+sudo vim /etc/apache2/sites-available/vtigercrm.conf
+
+     <VirtualHost *:80>       
+     ServerName domain.com    
+     DocumentRoot /var/www/vtigercrm/   
+     
+     <Directory /var/www/vtigercrm/>    
+        Options FollowSymlinks     
+        AllowOverride All     
+        Require all granted   
+     </Directory>   
+
+     ErrorLog /var/log/apache2/vtigercrm_error.log     
+     CustomLog /var/log/apache2/vtigercrm_access.log combined    
+     </VirtualHost>
+
+sudo chown -R www-data:www-data /var/www/vtigercrm/
+sudo a2dissite 000-default.conf
+sudo a2enmod rewrite
+sudo a2ensite vtigercrm.conf
+sudo systemctl restart apache2
+sudo ufw allow 80/tcp
+
+sudo apt install certbot -y
+sudo apt install python3-certbot-apache -y
+sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email admin@domain.com -d domain.com
 
 ```
 
@@ -160,8 +197,34 @@ sudo wget https://jaist.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.3.
 sudo tar xzf vtigercrm7.3.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
 
 sudo wget https://altushost-swe.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.4.0/Core%20Product/vtigercrm7.4.0.tar.gz
-sudo tar xzf vtigercrm7.4.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/    
-  
+sudo tar xzf vtigercrm7.4.0.tar.gz --strip-components=1 -C /var/www/vtigercrm/
+
+sudo vim /etc/apache2/sites-available/vtigercrm.conf
+
+     <VirtualHost *:80>       
+     ServerName domain.com    
+     DocumentRoot /var/www/vtigercrm/   
+     
+     <Directory /var/www/vtigercrm/>    
+        Options FollowSymlinks     
+        AllowOverride All     
+        Require all granted   
+     </Directory>   
+
+     ErrorLog /var/log/apache2/vtigercrm_error.log     
+     CustomLog /var/log/apache2/vtigercrm_access.log combined    
+     </VirtualHost>
+
+  sudo chown -R www-data:www-data /var/www/vtigercrm/    
+sudo a2dissite 000-default.conf    
+sudo a2enmod rewrite     
+sudo a2ensite vtigercrm.conf  
+sudo systemctl restart apache2     
+sudo ufw allow 80/tcp      
+
+
+
+
 ```
 ## Step-9==> setup config file
 
