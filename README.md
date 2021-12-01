@@ -1,5 +1,6 @@
 # Project
 
+scp kubeconfig opc@150.230.239.7:/home/opc/kubeconfig
 
 ```
 $ export IP=150.230.239.7
